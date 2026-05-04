@@ -1,0 +1,56 @@
+/***** NavBar *****/
+.my-nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.my-nav .nav-icon {
+  background-color: #7f22fe;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 15px;
+}
+.my-nav .hub {
+  color: #7f22fe;
+}
+.right-side {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.right-side .btn-add {
+  background-color: #6a30fa;
+  color: white;
+  border-radius: 18px;
+  padding: 8px 16px;
+}
+.icon-img {
+  width: 36px;
+  height: 36px;
+}
+.icon-img img {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+}
+.bg-gray-100{
+  background-color: #FDFCFE;
+}
+.none-icons{
+  width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+.icon-btn{
+  border-radius: 10px;
+  border: none;
+  padding: 8px;
+  background-color: transparent;
+}
+.icon-btn:hover{
+  background-color: #F3F4F6;
+}
+/***** End NavBar *****/
