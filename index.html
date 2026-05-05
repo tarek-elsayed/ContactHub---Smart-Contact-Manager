@@ -17,9 +17,11 @@
   <body>
     <!-- ========== Start NavBar ========== -->
 
-    <nav class="navbar navbar-expand-lg bg-gray-100 position-sticky top-0 z-40 border-bottom">
+    <nav
+      class="navbar navbar-expand-lg bg-gray-100 position-sticky top-0 z-40 border-bottom"
+    >
       <div class="container-fluid px-2">
-        <div class="my-nav ">
+        <div class="my-nav">
           <div class="navbar-brand" href="#">
             <div class="d-flex align-items-center">
               <div class="nav-icon">
@@ -32,11 +34,11 @@
           </div>
           <div class="right-side">
             <button class="btn me-2 btn-add d-flex align-items-center gap-2">
-              <i class="fa-solid fa-plus"></i> 
+              <i class="fa-solid fa-plus"></i>
               <span class="">Add</span>
             </button>
             <div class="none-icons d-none d-md-block">
-              <button class="icon-btn"> <i class="fa-solid fa-bell"></i></button>
+              <button class="icon-btn"><i class="fa-solid fa-bell"></i></button>
               <button class="icon-btn"><i class="fa-solid fa-gear"></i></button>
             </div>
             <div class="icon-img">
@@ -50,25 +52,215 @@
         </div>
       </div>
     </nav>
-   
+
     <!-- ========== End NavBar ========== -->
 
     <main>
-
-      <!-- ========== Start Section ========== -->
+      <!-- ========== Start quick-stats ========== -->
       <section class="quick-stats">
-        <div class="container-fluid"></div>
-        <div class="row">
-          <div class="col-sm-6 col-md-4">
-            
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-4 my-2">
+              <div class="content">
+                <div class="logo-icon bg-blue-100">
+                  <i class="fa-solid fa-users"></i>
+                </div>
+                <div class="content-right-side">
+                  <p class="text-uppercase">Total</p>
+                  <h3 id="total-contact">5</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-4 my-2">
+              <div class="content">
+                <div class="logo-icon bg-orange-100">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="content-right-side">
+                  <p class="text-uppercase">Favorites</p>
+                  <h3 id="total-contact">5</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-4 my-2">
+              <div class="content">
+                <div class="logo-icon bg-red-100">
+                  <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <div class="content-right-side">
+                  <p class="text-uppercase">Emergancy</p>
+                  <h3 id="total-contact">5</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h1 class="fs-1">All Contacts</h1>
+          <p>
+            Manage and organize your <span id="totalContact">0</span> contacts
+          </p>
+        </div>
+      </section>
+      <!-- ========== End quick-stats ========== -->
+
+      <!-- ========== Start Search ========== -->
+      <section class="search-section my-4">
+        <div class="container-fluid">
+          <div class="search-wrapper w-100 mx-auto">
+            <input
+              type="search"
+              class="form-control custom-search-input"
+              id="search"
+              placeholder="Search by name, phone, or email..."
+            />
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
           </div>
         </div>
-
       </section>
-      <!-- ========== End Section ========== -->
 
+      <!-- ========== End Search ========== -->
+
+      <!-- ========== Start All-Contact ========== -->
+      <section class="all-contact my-4" id="allContact">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-9">
+              <div class="row">
+                <div
+                  class="col-12 col-sm-12 col-md-6 col-lg-6 contact-card my-2"
+                >
+                  <div class="contact-header d-flex gap-3">
+                    <div class="header-logo">
+                      <p class="sami-name">TE</p>
+                      <div class="contact-icon">
+                        <div class="icon icon-fav">
+                          <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="icon icon-emg">
+                          <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contact-info">
+                      <h3>Tarek elsayed</h3>
+                      <div class="phone d-flex gap-2">
+                        <div class="phone-icon">
+                          <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="phone-number">
+                          <p>01228845512</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="contant-content">
+                    <div class="email d-flex gap-2 my-2">
+                      <div class="email-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                      </div>
+                      <div class="email-number">
+                        <p>mahofato@mailinator.com</p>
+                      </div>
+                    </div>
+                    <div class="location d-flex gap-2 my-2">
+                      <div class="location-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                      </div>
+                      <div class="location-number">
+                        <p>Tempore numquam ali</p>
+                      </div>
+                    </div>
+                    <span class="badge bg-primary">Primary</span>
+                    <span class="badge bg-primary">Primary</span>
+                  </div>
+                  <div class="card-footer">
+                    <div class="content d-flex justify-content-between">
+                      <div class="left-content d-flex gap-3">
+                        <button class="btn-icon ">
+                          <a class="icon-phone" href="tel:01228845512"><i class="fa-solid fa-phone"></i></a>
+                        </button>
+                        <button class="btn-icon ">
+                          <a class="icon-email" href="mailto:mahofato@mailinator.com"><i class="fa-solid fa-envelope"></i></a>
+                        </button>
+                      </div>
+                      <div class="right-content d-flex gap-3">
+                        <button class="btn-icon ">
+                          <a class="icon-favt"><i class="fa-regular fa-star"></i></a>
+                        </button>
+                        <button class="btn-icon ">
+                          <a class="icon-emergancy"><i class="fa-regular fa-heart"></i></a>
+                        </button>
+                        <button class="btn-icon d-none ">
+                          <a class="icon-emergancy"
+                            ><i class="fa-solid fa-heart-pulse"></i
+                          ></a>
+                        </button>
+                        <button class="btn-icon ">
+                          <a class="icon-edit"><i class="fa-solid fa-pen"></i></a>
+                        </button>
+                        <button class="btn-icon ">
+                          <a class="icon-delete"><i class="fa-solid fa-trash"></i></a>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-6 contact-card my-2">
+                <div class="contact-header d-flex gap-3">
+                  <div class="header-logo">
+                    <p class="sami-name">TE</p>
+                    <div class="contact-icon">
+                      <div class="icon icon-fav">
+                        <i class="fa-solid fa-star"></i>
+                      </div>
+                      <div class="icon icon-emg">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="contact-info">
+                    <h3>Tarek elsayed</h3>
+                    <div class="phone d-flex gap-2">
+                      <div class="phone-icon">
+                        <i class="fa-solid fa-phone"></i>
+                      </div>
+                      <div class="phone-number">
+                        <p>01228845512</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="contant-content">
+                  <div class="email d-flex gap-2 my-2">
+                    <div class="email-icon">
+                      <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div class="email-number">
+                      <p>mahofato@mailinator.com</p>
+                    </div>
+                  </div>
+                  <div class="location d-flex gap-2 my-2">
+                    <div class="location-icon">
+                      <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div class="location-number">
+                      <p>Tempore numquam ali</p>
+                    </div>
+                  </div>
+                  <span class="badge bg-primary">Primary</span>
+                  <span class="badge bg-primary">Primary</span>
+                </div>
+                <div class="card-footer">
+                  
+                </div>
+              </div> -->
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-3 bg-danger"></div>
+          </div>
+        </div>
+      </section>
+      <!-- ========== End All-Contact ========== -->
     </main>
-    
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
