@@ -344,6 +344,7 @@ function searchContact() {
   if (searchTerm == "") {
     filterContact = [];
   } else {
+    filterContact = [];
     for (var i = 0; i < contactsList.length; i++) {
       if (
         contactsList[i].name
