@@ -20,7 +20,7 @@
     <nav
       class="navbar navbar-expand-lg bg-gray-100 position-sticky top-0 z-40 border-bottom"
     >
-      <div class="container-fluid px-2">
+      <div class="container px-2">
         <div class="my-nav">
           <div class="navbar-brand" href="#">
             <div class="d-flex align-items-center">
@@ -33,7 +33,11 @@
             </div>
           </div>
           <div class="right-side">
-            <button class="btn me-2 btn-add d-flex align-items-center gap-2">
+            <button
+              class="btn me-2 btn-add d-flex align-items-center gap-2"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
               <i class="fa-solid fa-plus"></i>
               <span class="">Add</span>
             </button>
@@ -55,10 +59,189 @@
 
     <!-- ========== End NavBar ========== -->
 
+    <!-- ========== Start Modal ========== -->
+
+    <section>
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Add New Contact
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div id="contactForm" class="p-4">
+                <!-- Avatar -->
+                <div class="text-center mb-4">
+                  <div id="avatarPreview" class="avatar-preview">
+                    <i class="fa-solid fa-user"></i>
+                    <img src="" alt="" class="d-none" />
+                  </div>
+
+                  <label class="btn btn-light btn-sm mt-3 text-gray">
+                    <i class="fa-solid fa-camera me-1"></i> Change Photo
+                    <input
+                      type="file"
+                      id="avatarInput"
+                      accept="image/*"
+                      hidden
+                    />
+                  </label>
+
+                  <input type="hidden" id="avatarPath" />
+                </div>
+
+                <!-- Name -->
+                <div class="mb-3">
+                  <label class="form-label fw-medium">
+                    Full Name <span class="text-danger">*</span>
+                  </label>
+                  <input
+                  oninput="isNameValid()"
+                    type="text"
+                    id="contactName"
+                    class="form-control input-style"
+                    placeholder="Enter full name"
+                  />
+                  <div id="contactNameError" class="text-danger small d-none">
+                    Name should contain only letters and spaces (2-50 characters)
+                  </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="mb-3">
+                  <label class="form-label fw-medium">
+                    Phone Number <span class="text-danger">*</span>
+                  </label>
+                  <input
+                  oninput="isPhoneValid()"
+                    type="text"
+                    id="contactPhone"
+                    class="form-control input-style"
+                    placeholder="e.g., 01012345678"
+                  />
+                  <div id="contactPhoneError" class="text-danger small d-none">
+                    Please enter a valid Egyptian phone number
+                  </div>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                  <label class="form-label fw-medium">Email Address</label>
+                  <input
+                  oninput="isEmailValid()"
+                    type="text"
+                    id="contactEmail"
+                    class="form-control input-style"
+                    placeholder="name@example.com"
+                  />
+                  <div id="contactEmailError" class="text-danger small d-none">
+                    Please enter a valid email address
+                  </div>
+                </div>
+
+                <!-- Address -->
+                <div class="mb-3">
+                  <label class="form-label fw-medium">Address</label>
+                  <input
+                    type="text"
+                    id="contactAddress"
+                    class="form-control input-style"
+                    placeholder="Enter address"
+                  />
+                </div>
+
+                <!-- Group -->
+                <div class="mb-3">
+                  <label class="form-label fw-medium">Group</label>
+                  <select id="contactGroup" class="form-select input-style">
+                    <option value="">Select a group</option>
+                    <option value="family">Family</option>
+                    <option value="friends">Friends</option>
+                    <option value="work">Work</option>
+                    <option value="school">School</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <!-- Notes -->
+                <div class="mb-3">
+                  <label class="form-label fw-medium">Notes</label>
+                  <textarea
+                    id="contactNotes"
+                    rows="2"
+                    class="form-control input-style"
+                  ></textarea>
+                </div>
+
+                <!-- Checkboxes -->
+                <div class="d-flex gap-4 mb-3">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="contactFavorite"
+                    />
+                    <label class="form-check-label">
+                      <i class="fa-solid fa-star text-warning me-1"></i>
+                      Favorite
+                    </label>
+                  </div>
+
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="contactEmergency"
+                    />
+                    <label class="form-check-label">
+                      <i class="fa-solid fa-heart-pulse text-danger me-1"></i>
+                      Emergency
+                    </label>
+                  </div>
+                </div>
+
+                <input type="hidden" id="contactId" />
+
+                <!-- Actions -->
+                <div class="d-flex flex-column flex-sm-row gap-2">
+                  <button type="button" class="btn w-100 submit-btn" onclick="addContact()">
+                    <i class="fa-solid fa-check me-1"></i> Save Contact
+                  </button>
+                  <button
+                    type="button"
+                    id="cancelModalBtn"
+                    class="btn btn-light w-100 cancel-btn"
+                    data-bs-dismiss="modal"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ========== End Modal ========== -->
+
     <main>
       <!-- ========== Start quick-stats ========== -->
       <section class="quick-stats">
-        <div class="container-fluid">
+        <div class="container">
           <div class="row">
             <div class="col-6 col-sm-6 col-md-4 col-lg-4 my-2">
               <div class="content">
@@ -67,7 +250,7 @@
                 </div>
                 <div class="content-right-side">
                   <p class="text-uppercase">Total</p>
-                  <h3 id="total-contact">5</h3>
+                  <h3 id="total-contact"></h3>
                 </div>
               </div>
             </div>
@@ -78,7 +261,7 @@
                 </div>
                 <div class="content-right-side">
                   <p class="text-uppercase">Favorites</p>
-                  <h3 id="total-contact">5</h3>
+                  <h3 id="total-contact-fav"></h3>
                 </div>
               </div>
             </div>
@@ -89,7 +272,7 @@
                 </div>
                 <div class="content-right-side">
                   <p class="text-uppercase">Emergancy</p>
-                  <h3 id="total-contact">5</h3>
+                  <h3 id="total-contact-emer"></h3>
                 </div>
               </div>
             </div>
@@ -104,9 +287,10 @@
 
       <!-- ========== Start Search ========== -->
       <section class="search-section my-4">
-        <div class="container-fluid">
+        <div class="container">
           <div class="search-wrapper w-100 mx-auto">
             <input
+            onchange="searchContact()"
               type="search"
               class="form-control custom-search-input"
               id="search"
@@ -121,141 +305,89 @@
 
       <!-- ========== Start All-Contact ========== -->
       <section class="all-contact my-4" id="allContact">
-        <div class="container-fluid">
+        <div class="container">
           <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-9">
-              <div class="row">
-                <div
-                  class="col-12 col-sm-12 col-md-6 col-lg-6 contact-card my-2"
-                >
-                  <div class="contact-header d-flex gap-3">
-                    <div class="header-logo">
-                      <p class="sami-name">TE</p>
-                      <div class="contact-icon">
-                        <div class="icon icon-fav">
-                          <i class="fa-solid fa-star"></i>
-                        </div>
-                        <div class="icon icon-emg">
-                          <i class="fa-solid fa-heart-pulse"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="contact-info">
-                      <h3>Tarek elsayed</h3>
-                      <div class="phone d-flex gap-2">
-                        <div class="phone-icon">
-                          <i class="fa-solid fa-phone"></i>
-                        </div>
-                        <div class="phone-number">
-                          <p>01228845512</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="contant-content">
-                    <div class="email d-flex gap-2 my-2">
-                      <div class="email-icon">
-                        <i class="fa-solid fa-envelope"></i>
-                      </div>
-                      <div class="email-number">
-                        <p>mahofato@mailinator.com</p>
-                      </div>
-                    </div>
-                    <div class="location d-flex gap-2 my-2">
-                      <div class="location-icon">
-                        <i class="fa-solid fa-location-dot"></i>
-                      </div>
-                      <div class="location-number">
-                        <p>Tempore numquam ali</p>
-                      </div>
-                    </div>
-                    <span class="badge bg-primary">Primary</span>
-                    <span class="badge bg-primary">Primary</span>
-                  </div>
-                  <div class="card-footer">
-                    <div class="content d-flex justify-content-between">
-                      <div class="left-content d-flex gap-3">
-                        <button class="btn-icon ">
-                          <a class="icon-phone" href="tel:01228845512"><i class="fa-solid fa-phone"></i></a>
-                        </button>
-                        <button class="btn-icon ">
-                          <a class="icon-email" href="mailto:mahofato@mailinator.com"><i class="fa-solid fa-envelope"></i></a>
-                        </button>
-                      </div>
-                      <div class="right-content d-flex gap-3">
-                        <button class="btn-icon ">
-                          <a class="icon-favt"><i class="fa-regular fa-star"></i></a>
-                        </button>
-                        <button class="btn-icon ">
-                          <a class="icon-emergancy"><i class="fa-regular fa-heart"></i></a>
-                        </button>
-                        <button class="btn-icon d-none ">
-                          <a class="icon-emergancy"
-                            ><i class="fa-solid fa-heart-pulse"></i
-                          ></a>
-                        </button>
-                        <button class="btn-icon ">
-                          <a class="icon-edit"><i class="fa-solid fa-pen"></i></a>
-                        </button>
-                        <button class="btn-icon ">
-                          <a class="icon-delete"><i class="fa-solid fa-trash"></i></a>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-6 contact-card my-2">
-                <div class="contact-header d-flex gap-3">
-                  <div class="header-logo">
-                    <p class="sami-name">TE</p>
-                    <div class="contact-icon">
-                      <div class="icon icon-fav">
-                        <i class="fa-solid fa-star"></i>
-                      </div>
-                      <div class="icon icon-emg">
-                        <i class="fa-solid fa-heart-pulse"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="contact-info">
-                    <h3>Tarek elsayed</h3>
-                    <div class="phone d-flex gap-2">
-                      <div class="phone-icon">
-                        <i class="fa-solid fa-phone"></i>
-                      </div>
-                      <div class="phone-number">
-                        <p>01228845512</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="contant-content">
-                  <div class="email d-flex gap-2 my-2">
-                    <div class="email-icon">
-                      <i class="fa-solid fa-envelope"></i>
-                    </div>
-                    <div class="email-number">
-                      <p>mahofato@mailinator.com</p>
-                    </div>
-                  </div>
-                  <div class="location d-flex gap-2 my-2">
-                    <div class="location-icon">
-                      <i class="fa-solid fa-location-dot"></i>
-                    </div>
-                    <div class="location-number">
-                      <p>Tempore numquam ali</p>
-                    </div>
-                  </div>
-                  <span class="badge bg-primary">Primary</span>
-                  <span class="badge bg-primary">Primary</span>
-                </div>
-                <div class="card-footer">
-                  
-                </div>
-              </div> -->
+              <div class="">
+                 <div class="row g-3" id="rowContactLeft"></div>
               </div>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-3 bg-danger"></div>
+            <div class="col-sm-12 col-md-12 col-lg-3 mt-md-2 mt-sm-2">
+              <div class="" id="rowFavorite">
+                <div class="card fav my-3">
+                  <div class="card-header d-flex gap-2">
+                    <div class="logo-icon">
+                      <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="content-right-side">
+                      <h3 class="text-uppercase">Favorites</h3>
+                      <p id="total-contact" style="font-size: 10px">
+                        Quick access to starred contacts
+                      </p>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div
+                      class="contact-item d-flex align-items-center justify-content-between"
+                    >
+                      <!-- Left -->
+                      <div class="d-flex align-items-center gap-3">
+                        <!-- Avatar -->
+                        <div class="avatar">RB</div>
+
+                        <!-- Info -->
+                        <div>
+                          <h6 class="mb-0 fw-bold">Rachel Burks</h6>
+                          <small class="text-muted">01223595579</small>
+                        </div>
+                      </div>
+
+                      <!-- Right Icon -->
+                      <div class="call-btn">
+                        <i class="fa-solid fa-phone"></i>
+                      </div>
+                    </div>
+                    <div class="div text-center d-none">No favorites yet</div>
+                  </div>
+                </div>
+              </div>
+              <div class="" id="rowEmergancy">
+                <div class="card emr my-3">
+                  <div class="card-header d-flex gap-2">
+                    <div class="logo-icon">
+                      <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <div class="content-right-side">
+                      <h3 class="text-uppercase">Emergency</h3>
+                      <p id="total-contact" style="font-size: 10px">
+                        Important contacts for urgent calls
+                      </p>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div
+                      class="contact-item-emr d-flex align-items-center justify-content-between"
+                    >
+                      <div class="d-flex align-items-center gap-3">
+                        <div class="avatar">RB</div>
+
+                        <div>
+                          <h6 class="mb-0 fw-bold">Rachel Burks</h6>
+                          <small class="text-muted">01223595579</small>
+                        </div>
+                      </div>
+
+                      <div class="call-btn emr-btn">
+                        <i class="fa-solid fa-phone"></i>
+                      </div>
+                    </div>
+                    <div class="div text-center d-none">
+                      No emergency contacts
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
