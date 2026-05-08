@@ -37,6 +37,7 @@
               class="btn me-2 btn-add d-flex align-items-center gap-2"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
+              onclick="resetAllInputs()"
             >
               <i class="fa-solid fa-plus"></i>
               <span class="">Add</span>
@@ -110,14 +111,15 @@
                     Full Name <span class="text-danger">*</span>
                   </label>
                   <input
-                  oninput="isNameValid()"
+                    oninput="isNameValid()"
                     type="text"
                     id="contactName"
                     class="form-control input-style"
                     placeholder="Enter full name"
                   />
                   <div id="contactNameError" class="text-danger small d-none">
-                    Name should contain only letters and spaces (2-50 characters)
+                    Name should contain only letters and spaces (2-50
+                    characters)
                   </div>
                 </div>
 
@@ -127,7 +129,7 @@
                     Phone Number <span class="text-danger">*</span>
                   </label>
                   <input
-                  oninput="isPhoneValid()"
+                    oninput="isPhoneValid()"
                     type="text"
                     id="contactPhone"
                     class="form-control input-style"
@@ -142,7 +144,7 @@
                 <div class="mb-3">
                   <label class="form-label fw-medium">Email Address</label>
                   <input
-                  oninput="isEmailValid()"
+                    oninput="isEmailValid()"
                     type="text"
                     id="contactEmail"
                     class="form-control input-style"
@@ -195,7 +197,7 @@
                       type="checkbox"
                       id="contactFavorite"
                     />
-                    <label class="form-check-label">
+                    <label class="form-check-label" for="contactFavorite">
                       <i class="fa-solid fa-star text-warning me-1"></i>
                       Favorite
                     </label>
@@ -207,7 +209,7 @@
                       type="checkbox"
                       id="contactEmergency"
                     />
-                    <label class="form-check-label">
+                    <label class="form-check-label" for="contactEmergency">
                       <i class="fa-solid fa-heart-pulse text-danger me-1"></i>
                       Emergency
                     </label>
@@ -218,8 +220,21 @@
 
                 <!-- Actions -->
                 <div class="d-flex flex-column flex-sm-row gap-2">
-                  <button type="button" class="btn w-100 submit-btn" onclick="addContact()">
+                  <button
+                  id="saveContact"
+                    type="button"
+                    class="btn w-100 submit-btn"
+                    onclick="addContact()"
+                  >
                     <i class="fa-solid fa-check me-1"></i> Save Contact
+                  </button>
+                  <button
+                  id="updateContact"
+                    type="button"
+                    class="btn w-100 submit-btn d-none"
+                    onclick="updateContact()"
+                  >
+                    <i class="fa-solid fa-check me-1"></i> Update Contact
                   </button>
                   <button
                     type="button"
@@ -279,7 +294,7 @@
           </div>
           <h1 class="fs-1">All Contacts</h1>
           <p>
-            Manage and organize your <span id="totalContact">0</span> contacts
+            Manage and organize your <span id="totalContact"></span> contacts
           </p>
         </div>
       </section>
@@ -290,7 +305,7 @@
         <div class="container">
           <div class="search-wrapper w-100 mx-auto">
             <input
-            onchange="searchContact()"
+              oninput="searchContact()"
               type="search"
               class="form-control custom-search-input"
               id="search"
@@ -309,11 +324,11 @@
           <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-9">
               <div class="">
-                 <div class="row g-3" id="rowContactLeft"></div>
+                <div class="row g-3" id="rowContactLeft"></div>
               </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-3 mt-md-2 mt-sm-2">
-              <div class="" id="rowFavorite">
+              <div class="">
                 <div class="card fav my-3">
                   <div class="card-header d-flex gap-2">
                     <div class="logo-icon">
@@ -326,32 +341,10 @@
                       </p>
                     </div>
                   </div>
-                  <div class="card-body">
-                    <div
-                      class="contact-item d-flex align-items-center justify-content-between"
-                    >
-                      <!-- Left -->
-                      <div class="d-flex align-items-center gap-3">
-                        <!-- Avatar -->
-                        <div class="avatar">RB</div>
-
-                        <!-- Info -->
-                        <div>
-                          <h6 class="mb-0 fw-bold">Rachel Burks</h6>
-                          <small class="text-muted">01223595579</small>
-                        </div>
-                      </div>
-
-                      <!-- Right Icon -->
-                      <div class="call-btn">
-                        <i class="fa-solid fa-phone"></i>
-                      </div>
-                    </div>
-                    <div class="div text-center d-none">No favorites yet</div>
-                  </div>
+                  <div class="card-body" id="rowFavorite"></div>
                 </div>
               </div>
-              <div class="" id="rowEmergancy">
+              <div class="">
                 <div class="card emr my-3">
                   <div class="card-header d-flex gap-2">
                     <div class="logo-icon">
@@ -364,27 +357,7 @@
                       </p>
                     </div>
                   </div>
-                  <div class="card-body">
-                    <div
-                      class="contact-item-emr d-flex align-items-center justify-content-between"
-                    >
-                      <div class="d-flex align-items-center gap-3">
-                        <div class="avatar">RB</div>
-
-                        <div>
-                          <h6 class="mb-0 fw-bold">Rachel Burks</h6>
-                          <small class="text-muted">01223595579</small>
-                        </div>
-                      </div>
-
-                      <div class="call-btn emr-btn">
-                        <i class="fa-solid fa-phone"></i>
-                      </div>
-                    </div>
-                    <div class="div text-center d-none">
-                      No emergency contacts
-                    </div>
-                  </div>
+                  <div class="card-body" id="rowEmergancy"></div>
                 </div>
               </div>
             </div>
